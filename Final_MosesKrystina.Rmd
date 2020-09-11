@@ -1,0 +1,195 @@
+---
+title: "Final_MosesKrystina"
+author: "Krystina Moses"
+date: "06/01/2019"
+output: html_document
+---
+#Statistics for Data Science Final
+
+For all of the datasets, I limited the data to what I was interested in analyzing and by removing all the unneeded values for comparison. 
+
+```{r setup, include=FALSE}
+setwd("/Users/krystina/Statistics for Data Science/Final_MosesKrystina")
+
+library(car)
+library(pastecs)
+library(psych)
+library(readxl)
+library(ggplot2)
+library(boot)
+library(ggm)
+library(Hmisc)
+library(ppcor)
+library(tidyr)
+library(dplyr)
+library(broom)
+library(QuantPsyc)
+```
+
+**Black Friday**
+
+Dataset
+
+```{r blackfriday, echo=FALSE}
+blackfriday <- read.csv("BlackFriday.csv")
+describe(blackfriday)
+class(blackfriday)
+names(blackfriday)
+
+blackfriday[is.na(blackfriday)] = 0
+
+blackfriday$Product_ID <- blackfriday$Product_Category_1 <- blackfriday$Product_Category_2 <- blackfriday$Product_Category_3 <- 
+  blackfriday$Occupation <- blackfriday$City_Category <- blackfriday$User_ID <- blackfriday$Stay_In_Current_City_Years <- 
+  blackfriday$Marital_Status <- NULL
+
+head(blackfriday, n = 10)
+tail(blackfriday, n = 10)
+```
+
+*What is the spending amount compared to the age of the shopper*
+
+It was interesting to see the summary of the data as random. The age groups were broken down as 55+, 51-55, 46-50, 36-45, 26-35, 18-25, and 18-25. While analyzing the data, none of the age groups had a higher spending than the others.
+
+I found the average purchases total was $9333.86 by calculating the mean of the column. Around the average purchase, there were less of the age group 55+; however, there was still no one that stood out as being a top hit for the analysis. The graph I plotted to assist with visual understanding did not show any change/significance as it was all lines that showed no significant changes with the categories of data.
+
+Average Purchase
+
+```{r, echo=FALSE}
+mean(blackfriday$Purchase)
+```
+
+The limitations of the data were there was not enough to go by. I believe additional categories would have been helpful to analyze further of what age groups are shopping for to add up to the total purchases made. It could be built on by analyzing it further with the additional yearly data as well for particular stores.
+
+Graphs
+
+```{r, echo=FALSE}
+BFhistogram <- ggplot(blackfriday, aes(x = Purchase))
+BFhistogram + geom_histogram(aes(y = ..density..), binwidth = 4) +
+  ggtitle("BlackFriday")
+
+BFscatter <- ggplot(blackfriday, aes(x = Purchase, y = Age))
+BFscatter + geom_point(shape = 1) +
+            geom_smooth(method = lm) +
+            ggtitle("BlackFriday") +
+            labs(x ="Purchase",y ="Age")
+```
+
+**Hockey**
+
+Dataset
+
+```{r hockey, echo=FALSE}
+hockey <- read.csv("TeamsPost.csv")
+describe(hockey)
+class(hockey)
+names(hockey)
+
+hockey[is.na(hockey)] = 0
+
+hockey$BenchMinor <- hockey$PPG <- hockey$PPC <- hockey$SHA <- hockey$PKG <- hockey$PKC <- hockey$SHF <- hockey$lgID <- hockey$tmID <- hockey$PIM <- NULL
+
+head(hockey, n = 10)
+tail(hockey, n = 10)
+```
+
+Average Goals For
+
+```{r, echo=FALSE}
+mean(hockey$GF)
+```
+
+Average Goals Against
+
+```{r, echo=FALSE}
+mean(hockey$GA)
+```
+*How do the goals for and against compare within the wins/losses*
+
+While analyzing the data I was most interested in seeing how the goals changed for the number of wins and losses over the different years. I used graphs and calculations of the averages to analyze the trends. The average goals for and goals against was calculated to 25.6. 
+
+Overall, I found that in the year 1918, the total number of games as 5 and when there were 4 wins vs 1 loss, there was a higher goals for amount than against. When sorting the data from highest amount of goals for, it is shown that this was in the year of 1984; however, the big difference is the number of games played at 18 vs the data before at 5. 
+
+The dataframe could include more data and more of recent years to have a better idea of how the information and game has changed over time.
+
+Graphs
+
+```{r, echo=FALSE}
+HKhistogram <- ggplot(hockey, aes(x = year))
+HKhistogram + geom_histogram(aes(y = ..density..), binwidth = 4) +
+  ggtitle("Hockey")
+
+HKscatter <- ggplot(hockey, aes(x = GA, y = GF))
+HKscatter + geom_point(shape = 1) +
+  geom_smooth(method = lm) +
+  ggtitle("Hockey") +
+  labs(x ="Goals Against", y ="Goals For")
+```
+
+**Heart**
+
+Dataset
+
+```{r heart, echo=FALSE}
+heart <- read.csv("heart.csv")
+describe(heart)
+class(heart)
+names(heart)
+
+heart[is.na(heart)] = 0
+
+heart$exang <- heart$oldpeak <- heart$restecg <- heart$sex <- heart$slope <- heart$thal <- 
+  heart$target <- heart$ca <- NULL
+
+head(heart, n = 10)
+tail(heart, n = 10)
+```
+*What is the biggest factor within each age group*
+
+With the everchanging role that healthcare has had on our lives, it is important to take care of ourselves. I found this data set focusing around heart attacks and the data for patients.
+
+The average cholesterol was given at 246.3
+The average age of heart attack was given at 54.
+The avereage resting blood pressure was 131.6
+The average maximum heart rate schieved was 149.65.
+
+Given the average numbers made me realize that with the average age being 54, it is younger than I thought and it is important to pay attention to the other numbers as well to prevent future heart attacks and other health concerns. I was also looking closely at the cholesterol and was thinking it would be more centralized around one age group and during my analysis, I noticed it was random and it is shown within the graph. 
+
+Average cholesterol
+
+```{r, echo=FALSE}
+mean(heart$chol)
+```
+
+Average age
+
+```{r, echo=FALSE}
+mean(heart$age)
+```
+
+Average resting blood pressure
+
+```{r, echo=FALSE}
+mean(heart$trestbps)
+```
+
+Avernge max heart rate
+
+```{r, echo=FALSE}
+mean(heart$thalach)
+```
+
+Graphs
+
+```{r, echo=FALSE}
+HThistogram <- ggplot(heart, aes(x = age))
+HThistogram + geom_histogram(aes(y = ..density..), binwidth = 4) +
+  ggtitle("Heart")
+
+HTscatter <- ggplot(heart, aes(x = age, y = chol))
+HTscatter + geom_point(shape = 1) +
+  geom_smooth(method = lm) +
+  ggtitle("Heart") +
+  labs(x ="Age",y ="Cholesterol")
+```
+
+The information for this dataset was given with more information for analysis. It can be built upon with more research of the different symptoms and how the numbers change and also more data for different years to compare if things have gotten better or worse. 

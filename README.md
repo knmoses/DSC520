@@ -1,4 +1,7 @@
-# DSC520
+# Class
+Statistics for Data Science
+
+## About
 This project showcases skills and utilizing a number of packages in R.
 
 ### Programming Language

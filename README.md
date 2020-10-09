@@ -2,10 +2,13 @@
 Statistics for Data Science
 
 ## About
-This project showcases skills and utilizing a number of packages in R.
+This project looks at three different sets of data to answer the following questions:
+ 1. What is the spending amount compared to the age of the shopper? *Black Friday dataset*
+ 2. How do the goals for and against compare within the wins/losses? *Hockey dataset*
+ 3. What is the biggest factor within each age group? *Heart dataset*
 
 ### Programming Language
 R
 
 ### Data used
-Three datasets were used. They were surrounding Black Friday shopping, Heart conditions, and Hockey statistics
+Three datasets were used. They were surrounding Black Friday shopping, Heart conditions, and Hockey statistics. They are included in the repository. 

@@ -12,3 +12,8 @@ R
 
 ### Data used
 Three datasets were used. They were surrounding Black Friday shopping, Heart conditions, and Hockey statistics. They are included in the repository. 
+
+## License
+MIT License
+
+Copyright (c) 2020 Krystina Moses

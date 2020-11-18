@@ -18,11 +18,11 @@ R
 ## Data used
 Three datasets were used and included in the repository.
 
-* Black Friday shopping: "BlackFriday.csv"
+* Black Friday shopping: BlackFriday.csv
 
-* Heart conditions: "hearts.csv"
+* Heart conditions: hearts.csv
 
-* Hockey statistics: "TeamsPost.csv"
+* Hockey statistics: TeamsPost.csv
 
 ## License
 MIT License

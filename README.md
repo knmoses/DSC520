@@ -9,13 +9,21 @@ This project looks at three different sets of data to answer the following quest
  
 ## File Information
 
+R Markdown Code: "Final_MosesKrystina.Rmd"
+
 ## Results
 
 ### Programming Language
 R
 
 ### Data used
-Three datasets were used. They were surrounding Black Friday shopping, Heart conditions, and Hockey statistics. They are included in the repository. 
+Three datasets were used and included in the repository.
+
+* Black Friday shopping: "BlackFriday.csv"
+
+* Heart conditions: "hearts.csv"
+
+* Hockey statistics: "TeamsPost.csv"
 
 ## License
 MIT License

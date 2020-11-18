@@ -8,7 +8,6 @@ This project looks at three different sets of data to answer the following quest
  3. What is the biggest factor within each age group? *Heart dataset*
  
 ## File Information
-
 R Markdown Code: "Final_MosesKrystina.Rmd"
 
 ## Results

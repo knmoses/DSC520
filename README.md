@@ -1,4 +1,4 @@
-# Class
+## Class
 Statistics for Data Science
 
 ## About

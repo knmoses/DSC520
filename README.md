@@ -20,7 +20,7 @@ R Markdown Code: "Final_MosesKrystina.Rmd"
 ## Programming Language
 R
 
-## Data used
+## Data
 Three datasets were used and included in the repository.
 
 * Black Friday shopping: BlackFriday.csv
